@@ -28,7 +28,7 @@ module.exports = {
             },
             {
                 test: /\.sass$/,
-                loaders: ExtractTextPlugin.extract({
+                loader: ExtractTextPlugin.extract({
                     fallbackLoader: "style-loader",
                     loader: ["css-loader", "sass-loader"]
                 })
@@ -41,7 +41,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)(\?\S*)?$/,
                 loader: "file-loader",
                 query: {
-                name: "[name].[ext]?[hash]"
+                    name: "[name].[ext]?[hash]"
                 }
             }
         ]

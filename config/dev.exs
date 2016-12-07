@@ -11,7 +11,8 @@ config :phoenix_webpack_example, PhoenixWebpackExample.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [{Path.expand("node_modules/webpack/bin/webpack.js"), ["--watch", "--colors", "--progress"]}]
+  watchers: [node: ["node_modules/webpack/bin/webpack.js", "--watch", "--colors", "--progress",
+                    cd: Path.expand("../", __DIR__)]]
 
 
 # Watch static and templates for browser reloading.

@@ -6,7 +6,7 @@ var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
   entry: {
-    app: ["./web/static/css/app.sass", "./web/static/js/app.js"]
+    app: ["./web/static/css/app.scss", "./web/static/js/app.js"]
   },
   output: {
     path: "./priv/static",
@@ -20,14 +20,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallbackLoader: "style-loader",
-          loader: "css-loader"
-        })
-      },
-      {
-        test: /\.sass$/,
+        test: /\.(css|scss|sass)$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: "style-loader",
           loader: ["css-loader", "sass-loader"]

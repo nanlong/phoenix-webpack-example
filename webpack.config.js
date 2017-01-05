@@ -2,7 +2,7 @@ var path = require("path");
 var webpack = require("webpack");
 var CopyWebpackPlugin = require("copy-webpack-plugin");
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
-var OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+var OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -23,7 +23,7 @@ module.exports = {
         }
       },
       {
-        test: /\.(css|scss|sass)(\?\S*)?$/,
+        test: /\.(css|scss|sass)$/,
         loader: ExtractTextPlugin.extract({
           fallbackLoader: "style-loader",
           loader: ["css-loader", "sass-loader"]
@@ -46,12 +46,12 @@ module.exports = {
     new ExtractTextPlugin("css/[name].css"),
     new CopyWebpackPlugin([{ from: "./web/static/assets" }])
   ],
-  devtool: "#eval-source-map"
+  devtool: "#cheap-module-source-map"
 };
 
 
 if (process.env.NODE_ENV === "production") {
-  module.exports.devtool = "#source-map";
+  module.exports.devtool = "#cheap-module-eval-source-map";
 
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
